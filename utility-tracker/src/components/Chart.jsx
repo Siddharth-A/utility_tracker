@@ -1,18 +1,23 @@
-// import * as React from 'react';
-import { BarChart } from '@mui/x-charts/BarChart';
+import * as React from "react";
+import { BarChart } from "@mui/x-charts/BarChart";
+import { addLabels, fakeData } from "./data";
 
 export default function Chart() {
   return (
     <BarChart
-      series={[
-        { data: [35, 44, 24, 34] },
-        { data: [51, 6, 49, 30] },
-        { data: [15, 25, 30, 50] },
-        { data: [60, 50, 15, 25] },
-      ]}
+      dataset={fakeData}
+      //   layout="horizontal"
+      series={addLabels([
+        { dataKey: "Alectra", stack: "liability" },
+        { dataKey: "Bhydro", stack: "liability" },
+        { dataKey: "Enbridge", stack: "liability" },
+        { dataKey: "Reliance", stack: "liability" },
+      ])}
+      xAxis={[{ scaleType: "band", dataKey: "month" }]}
+      slotProps={{ legend: { position: { vertical: "bottom" }, itemMarkWidth:10, itemMarkHeight:5, itemGap:2 } }}
+      width={420}
       height={400}
-      xAxis={[{ data: ['Q1', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
-      margin={{ top: 50, bottom: 50, left: 10, right: 10 }}
+      margin={{ top: 30, bottom: 60 }}
     />
   );
 }
