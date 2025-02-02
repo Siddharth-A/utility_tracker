@@ -12,12 +12,20 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf";
 
 const pages = ["Dashboard", "Database"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function Navbar() {
+function Navbar({ toggleDarkMode }) {
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const handleThemeToggle = () => {
+    setIsDarkMode((prev) => !prev);
+    toggleDarkMode(); // Toggle the theme globally
+  };
+
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -114,10 +122,9 @@ function Navbar() {
           >
             MINTEK SOFTWARE
           </Typography>
-          <DarkModeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          {/* <Button onClick={() => setDarkTheme((darkTheme) => !darkTheme)}>
-            <DarkModeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          </Button> */}
+          <Button onClick={handleThemeToggle}>
+          {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+          </Button>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (

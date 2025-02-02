@@ -1,14 +1,19 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./theme";
-// import './index.css'
+import { lightTheme, darkTheme } from "./theme";
 import App from "./App";
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </StrictMode>
-);
+function Root() {
+  const [isDarkMode, setIsDarkMode] = useState(false);  // State to manage theme
+
+  return (
+    <StrictMode>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <App toggleDarkMode={() => setIsDarkMode((prev) => !prev)} />
+      </ThemeProvider>
+    </StrictMode>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<Root />);

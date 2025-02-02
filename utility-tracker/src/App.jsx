@@ -4,10 +4,10 @@ import Chart from "./components/Chart";
 import Pie from "./components/Pie";
 import "./App.css";
 
-function App() {
+function App({ toggleDarkMode }) {
   return (
     <div>
-      <Navbar />
+      <Navbar toggleDarkMode={toggleDarkMode}/>
       <Chart />
       {/* <Pie /> */}
       <p>test abce </p>
