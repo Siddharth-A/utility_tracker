@@ -14,7 +14,7 @@ export default function Chart() {
         { dataKey: "Reliance", stack: "liability" },
       ])}
       xAxis={[{ scaleType: "band", dataKey: "month" }]}
-      slotProps={{ legend: { position: { vertical: "bottom" }, itemMarkWidth:10, itemMarkHeight:5, itemGap:2 } }}
+      slotProps={{ legend: { position: { vertical: "bottom", horizontal:"middle" }, itemMarkWidth:10, itemMarkHeight:5, itemGap:4 } }}
       width={420}
       height={400}
       margin={{ top: 30, bottom: 60 }}

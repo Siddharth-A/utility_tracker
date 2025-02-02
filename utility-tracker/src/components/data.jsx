@@ -2,7 +2,7 @@
 
 const translations = {
     Alectra: 'Alectra',
-    Bhydro: 'Brampton Hydro',
+    Bhydro: 'Hydro',
     Enbridge: 'Enbridge',
     Reliance: 'Reliance',
   };
