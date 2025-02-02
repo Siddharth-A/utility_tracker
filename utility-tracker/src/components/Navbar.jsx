@@ -122,7 +122,7 @@ function Navbar({ toggleDarkMode }) {
           >
             MINTEK SOFTWARE
           </Typography>
-          <Button onClick={handleThemeToggle}>
+          <Button onClick={handleThemeToggle} color="inherit">
           {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
           </Button>
 
