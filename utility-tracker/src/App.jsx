@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Grid } from "@mui/material";
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+// import Feed from "./components/Feed";
+// import Leftbar from "./components/Leftbar";
+// import Rightbar from "./components/Rightbar";
+// import Navbar from "./components/Navbar";
+// import Add from "./components/Add";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          test 123
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <p className="read-the-docs">sample text abcd</p>
+    </div>
+    
   )
 }
 
 export default App
+
+
+// import { Grid } from "@mui/material";
+// import * as React from "react";
+// import { styled } from "@mui/material/styles";
+// import Feed from "./components/Feed";
+// import Leftbar from "./components/Leftbar";
+// import Rightbar from "./components/Rightbar";
+// import Navbar from "./components/Navbar";
+// import Add from "./components/Add";
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Navbar/>
+//       <Grid container>
+//         <Grid item sm={2} xs={2}><Leftbar/></Grid>
+//         <Grid item sm={6} xs={10}><Feed/></Grid>
+//         <RBgrid item sm={3} ><Rightbar /></RBgrid>
+          
+//       </Grid>
+//       <Add />
+//     </div>
+//   );
+// };
+
+// export default App;
