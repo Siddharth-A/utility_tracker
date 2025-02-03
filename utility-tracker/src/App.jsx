@@ -1,5 +1,6 @@
 import * as React from "react";
 import Navbar from "./components/Navbar";
+import Bottombar from "./components/Bottombar";
 import Chart from "./components/Chart";
 import Pie from "./components/Pie";
 import Box from "@mui/material/Box";
@@ -20,7 +21,8 @@ function App({ toggleDarkMode }) {
       <Navbar toggleDarkMode={toggleDarkMode}/>
       <Chart />
       {/* <Pie /> */}
-      <p>test abce </p>
+      {/* <p>test abce </p> */}
+      <Bottombar />
     </Box>
   )
 }
