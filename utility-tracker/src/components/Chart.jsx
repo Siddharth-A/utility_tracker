@@ -46,41 +46,43 @@ export default function Chart() {
   };
 
   return (
-    <Box sx={{ p: 2 }}>
-      {/* Quarter Toggle Buttons */}
-      <ButtonGroup variant="contained" color="primary" sx={{ mb: 2 }}>
-        {[1, 2, 3, 4].map((q) => (
-          <Button
-            key={q}
-            onClick={() => toggleQuarter(q)}
-            variant={selectedQuarters.includes(q) ? "contained" : "outlined"}
-          >
-            Q{q}
-          </Button>
-        ))}
-      </ButtonGroup>
+    <Box sx={{ p: 1 }}>
+      <Box sx={{ p: 1, border:1, borderColor:'primary.main', borderRadius:'10px', borderWidth:3 }}>
+        {/* Quarter Toggle Buttons */}
+        <ButtonGroup size="small" variant="contained" color="primary" sx={{ ml: 2, mt: 0.5 }}>
+            {[1, 2, 3, 4].map((q) => (
+            <Button
+                key={q}
+                onClick={() => toggleQuarter(q)}
+                variant={selectedQuarters.includes(q) ? "contained" : "outlined"}
+            >
+                Q{q}
+            </Button>
+            ))}
+        </ButtonGroup>
 
-      &nbsp;
+        &nbsp;
 
-      {/* DataKey Dropdown */}
-      <FormControl sx={{ minWidth: 100, ml: 2 }} size="small">
-        <InputLabel id="dataKey-select-label">Data keys</InputLabel>
-        <Select
-          labelId="dataKey-select-label"
-          multiple
-          value={selectedDataKeys}
-          onChange={handleDataKeyChange}
-        //   renderValue={(selected) => selected.join(", ")}
-          renderValue={() => ""}
-        >
-          {dataKeys.map((key) => (
-            <MenuItem key={key} value={key}>
-              <Checkbox checked={selectedDataKeys.includes(key)} />
-              <ListItemText primary={key} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+        {/* DataKey Dropdown */}
+        <FormControl sx={{ minWidth: 100, ml:8, height: 1 }} size="small">
+            <InputLabel id="dataKey-select-label">Data keys</InputLabel>
+            <Select
+            labelId="dataKey-select-label"
+            multiple
+            value={selectedDataKeys}
+            onChange={handleDataKeyChange}
+            //   renderValue={(selected) => selected.join(", ")}
+            renderValue={() => ""}
+            >
+            {dataKeys.map((key) => (
+                <MenuItem key={key} value={key}>
+                <Checkbox checked={selectedDataKeys.includes(key)} />
+                <ListItemText primary={key} />
+                </MenuItem>
+            ))}
+            </Select>
+        </FormControl>
+      </Box>
 
       {/* Chart */}
       <BarChart
@@ -98,7 +100,7 @@ export default function Chart() {
           },
         }}
         // width={400}
-        height={400}
+        height={500}
         margin={{ top: 30, bottom: 60 }}
         barLabel="value"
       />

@@ -14,6 +14,7 @@ function App({ toggleDarkMode }) {
         backgroundColor: theme.palette.background.default, // Apply theme background
         color: theme.palette.text.primary, // Apply text color based on theme
         minHeight: "100vh", // Ensure full viewport height
+        width: "auto",
       }}
     >
       <Navbar toggleDarkMode={toggleDarkMode}/>
