@@ -5,7 +5,7 @@ import { lightTheme, darkTheme } from "./theme";
 import App from "./App";
 
 function Root() {
-  const [isDarkMode, setIsDarkMode] = useState(false);  // State to manage theme
+  const [isDarkMode, setIsDarkMode] = useState(true);  // State to manage theme
 
   return (
     <StrictMode>

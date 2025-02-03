@@ -1,35 +1,19 @@
-// import * as React from "react";
-// import { BarChart } from "@mui/x-charts/BarChart";
-// import { addLabels, fakeData } from "./data";
-
-// export default function Chart() {
-//   return (
-//     <BarChart
-//       dataset={fakeData}
-//         // layout="horizontal"
-//       series={addLabels([
-//         { dataKey: "Alectra", stack: "liability" },
-//         { dataKey: "Bhydro", stack: "liability" },
-//         { dataKey: "Enbridge", stack: "liability" },
-//         { dataKey: "Reliance", stack: "liability" },
-//       ])}
-//       xAxis={[{ scaleType: "band", dataKey: "month" }]}
-//       slotProps={{ legend: { position: { vertical: "bottom", horizontal:"middle" }, itemMarkWidth:10, itemMarkHeight:5, itemGap:4 } }}
-//       width={420}
-//       height={400}
-//       margin={{ top: 30, bottom: 60 }}
-//       barLabel="value"
-//     />
-//   );
-// }
 // Chart.jsx
 import * as React from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
-import { Button, ButtonGroup, Box } from "@mui/material";
+import { Button, ButtonGroup, Box, Select, MenuItem, InputLabel, FormControl, Checkbox, ListItemText } from "@mui/material";
 import { addLabels, fakeData } from "./data";
 
 export default function Chart() {
   const [selectedQuarters, setSelectedQuarters] = React.useState([1, 2, 3, 4]);
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState([
+    "Alectra",
+    "Bhydro",
+    "Enbridge",
+    "Reliance",
+  ]);
+
+  const dataKeys = ["Alectra", "Bhydro", "Enbridge", "Reliance"];
 
   // Define months corresponding to each quarter
   const quarterMonths = {
@@ -53,6 +37,14 @@ export default function Chart() {
     );
   };
 
+  // Handle data key selection from dropdown
+  const handleDataKeyChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedDataKeys(typeof value === 'string' ? value.split(',') : value);
+  };
+
   return (
     <Box sx={{ p: 2 }}>
       {/* Quarter Toggle Buttons */}
@@ -68,15 +60,34 @@ export default function Chart() {
         ))}
       </ButtonGroup>
 
+      &nbsp;
+
+      {/* DataKey Dropdown */}
+      <FormControl sx={{ minWidth: 100, ml: 2 }} size="small">
+        <InputLabel id="dataKey-select-label">Data keys</InputLabel>
+        <Select
+          labelId="dataKey-select-label"
+          multiple
+          value={selectedDataKeys}
+          onChange={handleDataKeyChange}
+        //   renderValue={(selected) => selected.join(", ")}
+          renderValue={() => ""}
+        >
+          {dataKeys.map((key) => (
+            <MenuItem key={key} value={key}>
+              <Checkbox checked={selectedDataKeys.includes(key)} />
+              <ListItemText primary={key} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+
       {/* Chart */}
       <BarChart
         dataset={filteredData}
-        series={addLabels([
-          { dataKey: "Alectra", stack: "liability" },
-          { dataKey: "Bhydro", stack: "liability" },
-          { dataKey: "Enbridge", stack: "liability" },
-          { dataKey: "Reliance", stack: "liability" },
-        ])}
+        series={addLabels(
+          selectedDataKeys.map((key) => ({ dataKey: key, stack: "liability" }))
+        )}
         xAxis={[{ scaleType: "band", dataKey: "month" }]}
         slotProps={{
           legend: {
@@ -86,7 +97,7 @@ export default function Chart() {
             itemGap: 4,
           },
         }}
-        width={420}
+        // width={400}
         height={400}
         margin={{ top: 30, bottom: 60 }}
         barLabel="value"
