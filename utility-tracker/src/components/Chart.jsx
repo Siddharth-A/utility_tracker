@@ -99,10 +99,12 @@ export default function Chart() {
             itemGap: 4,
           },
         }}
-        // width={400}
+        // width={500}
         height={500}
-        margin={{ top: 30, bottom: 60 }}
-        barLabel="value"
+        margin={{ top: 30, bottom: 60, left:15, right:15 }}
+        // barLabel="value"
+        // loading="true"
+        leftAxis={null}
       />
     </Box>
   );
