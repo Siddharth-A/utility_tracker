@@ -6,6 +6,7 @@ import Pie from "./components/Pie";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import "./App.css";
+import Monthlypaperview from "./components/Monthlypaperview";
 
 function App({ toggleDarkMode }) {
   const theme = useTheme(); // Get the current theme
@@ -19,6 +20,7 @@ function App({ toggleDarkMode }) {
       }}
     >
       <Navbar toggleDarkMode={toggleDarkMode}/>
+      <Monthlypaperview />
       <Chart />
       {/* <Pie /> */}
       {/* <p>test abce </p> */}

@@ -25,7 +25,7 @@ const translations = {
     },
     {
         month: 'Feb',
-        Alectra: 190,
+        Alectra: 191,
         Bhydro: 0,
         Enbridge: 210,
         Reliance: 40.50,
