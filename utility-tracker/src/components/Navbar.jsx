@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf";
+import { Drawer } from "@mui/material";
 
 const pages = ["Dashboard", "Database"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -79,7 +80,7 @@ function Navbar({ toggleDarkMode }) {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -100,7 +101,12 @@ function Navbar({ toggleDarkMode }) {
                   <Typography sx={{ textAlign: "center" }}>{page}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
+            <Drawer open={Boolean(anchorElNav)} onClose={handleCloseNavMenu} anchor="left">
+                <Typography>
+                    hi this is a drawer
+                </Typography>
+            </Drawer>
           </Box>
           <EnergySavingsLeafIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}

@@ -7,9 +7,9 @@ import { fakeData } from "./data";
 import { Grid2, Typography } from "@mui/material";
 
 import ElectricalServicesIcon from "@mui/icons-material/ElectricalServices";
-import WaterDropIcon from '@mui/icons-material/WaterDrop';
-import PropaneTankIcon from '@mui/icons-material/PropaneTank';
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import WaterDropIcon from "@mui/icons-material/WaterDrop";
+import PropaneTankIcon from "@mui/icons-material/PropaneTank";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 const IndPaper = styled(Paper)(({ theme }) => ({
   width: 1000,
@@ -51,7 +51,11 @@ export default function Monthlypaperview() {
   const dataKey = ["Alectra", "Bhydro", "Enbridge", "Reliance"];
 
   const currencyFormat = (value) =>
-    value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 1 });
+    value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 1,
+    });
   const calculateTotal = (data, keys) => {
     return keys.reduce((total, key) => total + (data[key] || 0), 0);
   };
@@ -68,14 +72,42 @@ export default function Monthlypaperview() {
         <TotPaper square={false} elevation={20}>
           <Grid2 container direction="column" sx={{ mt: 4, mb: 4 }}>
             <Grid2 container direction="row">
-              <Grid2 item size={5}><Typography variant="body1">{currentMonth}'s total bill:</Typography></Grid2>
+              <Grid2 item size={5}>
+                <Typography variant="body1">
+                  {currentMonth}'s total bill:
+                </Typography>
+              </Grid2>
               <Grid2 item size={2}></Grid2>
-              <Grid2 item size={5}><Typography variant="body1">MoM change %:</Typography></Grid2>
+              <Grid2 item size={5}>
+                <Typography variant="body1">MoM change %:</Typography>
+              </Grid2>
             </Grid2>
+
             <Grid2 container direction="row">
-              <Grid2 item size={5}><Typography fontFamily="monospace" variant="h4" fontWeight="bold">{currencyFormat(totalBill)}</Typography></Grid2>
+              <Grid2 item size={5}>
+                <Typography
+                  fontFamily="monospace"
+                  variant="h4"
+                  fontWeight="bold"
+                >
+                  {currencyFormat(totalBill)}
+                </Typography>
+              </Grid2>
               <Grid2 item size={2}></Grid2>
-              <Grid2 item size={5}><Typography fontFamily="monospace" variant="h4" fontWeight="bold" color={momChangePercent !== "N/A" && momChangePercent < 0 ? "#00ff99" : "#ff0062"}>{momChangePercent}%</Typography></Grid2>
+              <Grid2 item size={5}>
+                <Typography
+                  fontFamily="monospace"
+                  variant="h4"
+                  fontWeight="bold"
+                  color={
+                    momChangePercent !== "N/A" && momChangePercent < 0
+                      ? "#00ff99"
+                      : "#ff0062"
+                  }
+                >
+                  {momChangePercent}%
+                </Typography>
+              </Grid2>
             </Grid2>
           </Grid2>
         </TotPaper>
@@ -100,14 +132,14 @@ export default function Monthlypaperview() {
 
       <Stack direction="row" spacing={2} sx={{ ml: 4, mr: 4, mt: 2 }}>
         <IndPaper square={false} elevation={20}>
-        <LocalFireDepartmentIcon color="Enbridge" />
+          <LocalFireDepartmentIcon color="Enbridge" />
           <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[2]])}
           </Typography>
           <Typography variant="body1">{dataKey[2]}</Typography>
         </IndPaper>
         <IndPaper square={false} elevation={20}>
-        <PropaneTankIcon color="Reliance" />
+          <PropaneTankIcon color="Reliance" />
           <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[3]])}
           </Typography>
