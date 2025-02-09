@@ -1,6 +1,6 @@
 import * as React from "react";
 import Navbar from "./components/Navbar";
-import Bottombar from "./components/Bottombar";
+import Bottombar from "./components/bottomBar";
 import Chart from "./components/Chart";
 import Pie from "./components/Pie";
 import Box from "@mui/material/Box";
@@ -19,10 +19,10 @@ function App({ toggleDarkMode }) {
         width: "auto",
       }}
     >
-      <Navbar toggleDarkMode={toggleDarkMode}/>
+      {/* <Navbar toggleDarkMode={toggleDarkMode}/> */}
       <Monthlypaperview />
-      <Chart />
-      {/* <Pie /> */}
+      {/* <Chart /> */}
+      <Pie />
       {/* <p>test abce </p> */}
       <Bottombar />
     </Box>

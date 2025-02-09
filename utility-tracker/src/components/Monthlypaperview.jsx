@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { fakeData } from "./data";
-import { Typography } from "@mui/material";
+import { Grid2, Typography } from "@mui/material";
 
 const IndPaper = styled(Paper)(({ theme }) => ({
   width: 1000,
@@ -22,7 +22,7 @@ const IndPaper = styled(Paper)(({ theme }) => ({
 
 const TotPaper = styled(Paper)(({ theme }) => ({
   width: 1000,
-  height: 50,
+  height: 100,
   padding: theme.spacing(2),
   ...theme.typography.body2,
   // textAlign: 'center',
@@ -50,6 +50,25 @@ export default function Monthlypaperview() {
 
   return (
     <Box>
+      <Stack direction="row" spacing={4} sx={{ margin: 4 }}>
+        <TotPaper square={false} elevation={20}>
+          {/* <Typography variant="h6" fontWeight={"bold"}>
+            Total utility cost for {currentMonth}: {currencyFormat(totalBill)}
+          </Typography> */}
+          <Grid2 container spacing={2} direction="column" sx={{ mt: 1, mb: 2 }}>
+            <Grid2 item xs={12}>
+              <Typography variant="body1">{currentMonth}'s total bill:</Typography>
+            </Grid2>
+            <Grid2 item xs={12}>
+              <Typography variant="h4" fontWeight="bold">{currencyFormat(totalBill)}</Typography>
+            </Grid2>
+            {/* <Grid2 item xs={12}>
+              <Typography variant="body1" fontWeight="bold">Grid2 Row 3</Typography>
+            </Grid2> */}
+          </Grid2>
+        </TotPaper>
+      </Stack>
+
       <Stack direction="row" spacing={4} sx={{ margin: 4 }}>
         <IndPaper square={false} elevation={20}>
           <Typography variant="body1" fontWeight={"bold"}>
@@ -86,14 +105,6 @@ export default function Monthlypaperview() {
             {currencyFormat(currentMonthData[dataKey[3]])}
           </Typography>
         </IndPaper>
-      </Stack>
-
-      <Stack direction="row" spacing={4} sx={{ margin: 4 }}>
-        <TotPaper square={false} elevation={20}>
-          <Typography variant="h6" fontWeight={"bold"}>
-            Total utility cost for {currentMonth}: {currencyFormat(totalBill)}
-          </Typography>
-        </TotPaper>
       </Stack>
     </Box>
   );
