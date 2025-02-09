@@ -51,7 +51,7 @@ export default function Monthlypaperview() {
   const dataKey = ["Alectra", "Bhydro", "Enbridge", "Reliance"];
 
   const currencyFormat = (value) =>
-    value.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 1 });
   const calculateTotal = (data, keys) => {
     return keys.reduce((total, key) => total + (data[key] || 0), 0);
   };
