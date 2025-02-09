@@ -42,9 +42,12 @@ const TotPaper = styled(Paper)(({ theme }) => ({
 
 // {{ top: 30, bottom: 60, left:15, right:15 }}
 export default function Monthlypaperview() {
+  const currentMonthIndex = new Date().getMonth();
   const currentMonth = new Date().toLocaleString("Default", { month: "short" });
 
   const currentMonthData = fakeData.find((item) => item.month === currentMonth);
+  const previousMonthData = fakeData[currentMonthIndex - 1];
+
   const dataKey = ["Alectra", "Bhydro", "Enbridge", "Reliance"];
 
   const currencyFormat = (value) =>
@@ -53,27 +56,32 @@ export default function Monthlypaperview() {
     return keys.reduce((total, key) => total + (data[key] || 0), 0);
   };
   const totalBill = calculateTotal(currentMonthData, dataKey);
+  const previousTotalBill = calculateTotal(previousMonthData, dataKey);
+
+  const momChangePercent = previousTotalBill
+    ? Math.round(((totalBill - previousTotalBill) / previousTotalBill) * 100)
+    : "N/A";
 
   return (
     <Box>
       <Stack direction="row" spacing={4} sx={{ ml: 4, mr: 4, mt: 4 }}>
         <TotPaper square={false} elevation={20}>
-          <Grid2 container spacing={2} direction="column" sx={{ mt: 1, mb: 2 }}>
-            <Grid2 item xs={12}>
-              <Typography variant="body1">
-                {currentMonth}'s total bill:
-              </Typography>
+          <Grid2 container direction="column" sx={{ mt: 4, mb: 4 }}>
+            <Grid2 container direction="row">
+              <Grid2 item size={5}><Typography variant="body1">{currentMonth}'s total bill:</Typography></Grid2>
+              <Grid2 item size={2}></Grid2>
+              <Grid2 item size={5}><Typography variant="body1">MoM change %:</Typography></Grid2>
             </Grid2>
-            <Grid2 item xs={12}>
-              <Typography fontFamily="monospace" variant="h4" fontWeight="bold">
-                {currencyFormat(totalBill)}
-              </Typography>
+            <Grid2 container direction="row">
+              <Grid2 item size={5}><Typography fontFamily="monospace" variant="h4" fontWeight="bold">{currencyFormat(totalBill)}</Typography></Grid2>
+              <Grid2 item size={2}></Grid2>
+              <Grid2 item size={5}><Typography fontFamily="monospace" variant="h4" fontWeight="bold" color={momChangePercent !== "N/A" && momChangePercent < 0 ? "#00ff99" : "#ff0062"}>{momChangePercent}%</Typography></Grid2>
             </Grid2>
           </Grid2>
         </TotPaper>
       </Stack>
 
-      <Stack direction="row" spacing={4} sx={{ ml: 4, mr: 4, mt: 2 }}>
+      <Stack direction="row" spacing={2} sx={{ ml: 4, mr: 4, mt: 2 }}>
         <IndPaper square={false} elevation={20}>
           <ElectricalServicesIcon color="Alectra" />
           <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
@@ -90,7 +98,7 @@ export default function Monthlypaperview() {
         </IndPaper>
       </Stack>
 
-      <Stack direction="row" spacing={4} sx={{ ml: 4, mr: 4, mt: 2 }}>
+      <Stack direction="row" spacing={2} sx={{ ml: 4, mr: 4, mt: 2 }}>
         <IndPaper square={false} elevation={20}>
         <LocalFireDepartmentIcon color="Enbridge" />
           <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
