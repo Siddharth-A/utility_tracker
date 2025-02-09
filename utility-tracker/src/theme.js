@@ -11,6 +11,10 @@ export const lightTheme = createTheme({
         default: "#ffffff",  // Light background
         paper: "#f4f4f4",
       },
+      Alectra: { main: "#79C99E" },
+      Bhydro: { main: "#02A9EA" },
+      Enbridge: { main: "#E09F3E" },
+      Reliance: { main: "#F9627D" },
     },
   });
   
@@ -24,6 +28,10 @@ export const lightTheme = createTheme({
         default: "#121212",  // Dark background
         paper: "#1e1e1e",
       },
+      Alectra: { main: "#00ff9d" },
+      Bhydro: { main: "#7e37fa" },
+      Enbridge: { main: "#ffc400" },
+      Reliance: { main: "#ff2600" },
       text: {
         primary: "#ffffff",  // White text for dark mode
       },
@@ -32,3 +40,4 @@ export const lightTheme = createTheme({
       },
     },
   });
+//   const palette = ["#79C99E", "#02A9EA", "#E09F3E", "#F9627D"];

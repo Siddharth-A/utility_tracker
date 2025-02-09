@@ -6,9 +6,14 @@ import Box from "@mui/material/Box";
 import { fakeData } from "./data";
 import { Grid2, Typography } from "@mui/material";
 
+import ElectricalServicesIcon from "@mui/icons-material/ElectricalServices";
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import PropaneTankIcon from '@mui/icons-material/PropaneTank';
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+
 const IndPaper = styled(Paper)(({ theme }) => ({
   width: 1000,
-  height: 80,
+  height: 100,
   padding: theme.spacing(2),
   ...theme.typography.body2,
   // textAlign: 'center',
@@ -17,7 +22,8 @@ const IndPaper = styled(Paper)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
+  // alignItems: "center",
+  fontFamily: "monospace",
 }));
 
 const TotPaper = styled(Paper)(({ theme }) => ({
@@ -31,7 +37,7 @@ const TotPaper = styled(Paper)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  // alignItems: "left",
+  alignItems: "left",
 }));
 
 // {{ top: 30, bottom: 60, left:15, right:15 }}
@@ -50,60 +56,54 @@ export default function Monthlypaperview() {
 
   return (
     <Box>
-      <Stack direction="row" spacing={4} sx={{ margin: 4 }}>
+      <Stack direction="row" spacing={4} sx={{ ml: 4, mr: 4, mt: 4 }}>
         <TotPaper square={false} elevation={20}>
-          {/* <Typography variant="h6" fontWeight={"bold"}>
-            Total utility cost for {currentMonth}: {currencyFormat(totalBill)}
-          </Typography> */}
           <Grid2 container spacing={2} direction="column" sx={{ mt: 1, mb: 2 }}>
             <Grid2 item xs={12}>
-              <Typography variant="body1">{currentMonth}'s total bill:</Typography>
+              <Typography variant="body1">
+                {currentMonth}'s total bill:
+              </Typography>
             </Grid2>
             <Grid2 item xs={12}>
-              <Typography variant="h4" fontWeight="bold">{currencyFormat(totalBill)}</Typography>
+              <Typography fontFamily="monospace" variant="h4" fontWeight="bold">
+                {currencyFormat(totalBill)}
+              </Typography>
             </Grid2>
-            {/* <Grid2 item xs={12}>
-              <Typography variant="body1" fontWeight="bold">Grid2 Row 3</Typography>
-            </Grid2> */}
           </Grid2>
         </TotPaper>
       </Stack>
 
-      <Stack direction="row" spacing={4} sx={{ margin: 4 }}>
+      <Stack direction="row" spacing={4} sx={{ ml: 4, mr: 4, mt: 2 }}>
         <IndPaper square={false} elevation={20}>
-          <Typography variant="body1" fontWeight={"bold"}>
-            {dataKey[0]}
-          </Typography>
-          <Typography variant="h5" fontWeight={"bold"}>
+          <ElectricalServicesIcon color="Alectra" />
+          <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[0]])}
           </Typography>
+          <Typography variant="body1">{dataKey[0]}</Typography>
         </IndPaper>
         <IndPaper square={false} elevation={20}>
-          <Typography variant="body1" fontWeight={"bold"}>
-            {dataKey[1]}
-          </Typography>
-          <Typography variant="h5" fontWeight={"bold"}>
+          <WaterDropIcon color="Bhydro" />
+          <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[1]])}
           </Typography>
+          <Typography variant="body1">{dataKey[1]}</Typography>
         </IndPaper>
       </Stack>
 
-      <Stack direction="row" spacing={4} sx={{ margin: 4 }}>
+      <Stack direction="row" spacing={4} sx={{ ml: 4, mr: 4, mt: 2 }}>
         <IndPaper square={false} elevation={20}>
-          <Typography variant="body1" fontWeight={"bold"}>
-            {dataKey[2]}
-          </Typography>
-          <Typography variant="h5" fontWeight={"bold"}>
+        <LocalFireDepartmentIcon color="Enbridge" />
+          <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[2]])}
           </Typography>
+          <Typography variant="body1">{dataKey[2]}</Typography>
         </IndPaper>
         <IndPaper square={false} elevation={20}>
-          <Typography variant="body1" fontWeight={"bold"}>
-            {dataKey[3]}
-          </Typography>
-          <Typography variant="h5" fontWeight={"bold"}>
+        <PropaneTankIcon color="Reliance" />
+          <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[3]])}
           </Typography>
+          <Typography variant="body1">{dataKey[3]}</Typography>
         </IndPaper>
       </Stack>
     </Box>

@@ -19,7 +19,7 @@ function App({ toggleDarkMode }) {
         width: "auto",
       }}
     >
-      {/* <Navbar toggleDarkMode={toggleDarkMode}/> */}
+      <Navbar toggleDarkMode={toggleDarkMode}/>
       <Monthlypaperview />
       {/* <Chart /> */}
       <Pie />

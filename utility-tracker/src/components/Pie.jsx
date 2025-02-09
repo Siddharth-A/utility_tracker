@@ -7,6 +7,8 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { addLabels, fakeData } from "./data";
 import { Typography } from "@mui/material";
 
+import { lightTheme, darkTheme } from "./../theme";
+
 const IndPaper = styled(Paper)(({ theme }) => ({
   width: 370,
   height: 400,
@@ -30,14 +32,20 @@ export default function Pie() {
     label: key,
   }));
 
-  const palette = ["#79C99E", "#02A9EA", "#E09F3E", "#F9627D"];
+//   const palette = [`{theme.Alectra}`, "#02A9EA", "#E09F3E", "#F9627D"];
+const colorPalette = [
+    {...pieData[0], color:darkTheme.palette.Alectra.main},
+    {...pieData[1], color:darkTheme.palette.Bhydro.main},
+    {...pieData[2], color:darkTheme.palette.Enbridge.main},
+    {...pieData[3], color:darkTheme.palette.Reliance.main},
+];
 
   return (
     <Stack direction="row" spacing={10} sx={{ ml:4, mr:4, mt:6 }}>
     <IndPaper square={false} elevation={10}>
         <Typography fontWeight="bold" variant="h6">Utility Cost Breakdown</Typography>
         <PieChart
-        colors={palette}
+        // colors={palette}
         slotProps={{
             legend: {
             position: { vertical: "bottom", horizontal: "right" },
@@ -55,7 +63,7 @@ export default function Pie() {
             outerRadius: 150,
             paddingAngle: 4,
             cornerRadius: 4,
-            data: pieData,
+            data: colorPalette,
             },
         ]}
         width={400}
