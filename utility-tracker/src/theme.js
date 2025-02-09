@@ -27,5 +27,8 @@ export const lightTheme = createTheme({
       text: {
         primary: "#ffffff",  // White text for dark mode
       },
+      typography: {
+        // fontFamily: 'BlinkMacSystemFont',
+      },
     },
   });
