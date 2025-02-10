@@ -23,7 +23,6 @@ function App({ toggleDarkMode }) {
       <Monthlypaperview />
       {/* <Chart /> */}
       <Pie />
-      {/* <p>test abce </p> */}
       <Bottombar />
     </Box>
   )

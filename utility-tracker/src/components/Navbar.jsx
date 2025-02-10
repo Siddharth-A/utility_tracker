@@ -112,47 +112,26 @@ function Navbar({ toggleDarkMode }) {
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "BlinkMacSystemFont",
               fontWeight: 600,
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            MINTEK SOFTWARE
+            Mintek Software
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Drawer open={Boolean(anchorElNav)} onClose={handleCloseNavMenu} anchor="left">
-                <Typography>
-                    hi this is a drawer
-                </Typography>
-            </Drawer>
-          </Box>
-          <EnergySavingsLeafIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -163,7 +142,7 @@ function Navbar({ toggleDarkMode }) {
               textDecoration: "none",
             }}
           >
-            MINTEK SOFTWARE
+            Mintek Software
           </Typography>
           <FormGroup>
             <FormControlLabel control={<ThemeSwitch sx={{ m:1 }} onChange={handleThemeToggle} checked={isDarkMode} />} />
