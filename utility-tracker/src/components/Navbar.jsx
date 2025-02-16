@@ -1,23 +1,13 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf";
-import { Drawer, FormControlLabel, FormGroup } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import { Switch } from '@mui/material'
-
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import Toolbar from "@mui/material/Toolbar";
+import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import { FormControlLabel, FormGroup } from "@mui/material";
 
 const pages = ["Dashboard", "Database"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -108,9 +98,6 @@ function Navbar({ toggleDarkMode }) {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <EnergySavingsLeafIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
           <Typography
             variant="h5"
             noWrap

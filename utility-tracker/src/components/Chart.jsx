@@ -2,6 +2,7 @@
 import * as React from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { Button, ButtonGroup, Box, Select, MenuItem, InputLabel, FormControl, Checkbox, ListItemText } from "@mui/material";
+
 import { addLabels, fakeData } from "./data";
 
 export default function Chart() {

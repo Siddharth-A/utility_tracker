@@ -1,7 +1,4 @@
 import * as React from "react";
-import Navbar from "./Navbar";
-import Bottombar from "./bottomBar";
-import Chart from "./Chart";
 import Pie from "./Pie";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";

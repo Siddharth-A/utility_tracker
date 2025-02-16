@@ -1,12 +1,11 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
-
-import { PieChart } from "@mui/x-charts/PieChart";
-import { addLabels, fakeData } from "./data";
 import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { PieChart } from "@mui/x-charts/PieChart";
 
+import { addLabels, fakeData } from "./data";
 import { lightTheme, darkTheme } from "./../theme";
 
 const IndPaper = styled(Paper)(({ theme }) => ({

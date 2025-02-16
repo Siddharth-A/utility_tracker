@@ -1,14 +1,15 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import { styled } from "@mui/material/styles";
+import { useNavigate } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import MuiBottomNavigationAction from '@mui/material/BottomNavigationAction'
+
 import StorageIcon from '@mui/icons-material/Storage';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import SettingsIcon from '@mui/icons-material/Settings';
-import Paper from '@mui/material/Paper';
-import { useNavigate } from 'react-router-dom';
-
 
 export default function Bottombar() {
   const [value, setValue] = React.useState(0);
@@ -30,6 +31,13 @@ export default function Bottombar() {
         navigate('/');
     }
   };
+
+  const BottomNavigationAction = styled(MuiBottomNavigationAction)(`
+    color: grey;
+    &.Mui-selected {
+      color: #00ff99;
+    }
+  `);
 
   return (
     <Box sx={{ pb: 7 }}>
