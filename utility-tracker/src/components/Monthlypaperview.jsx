@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import { Grid2, Typography } from "@mui/material";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import PropaneTankIcon from "@mui/icons-material/PropaneTank";
+import ElectricalServicesIcon from "@mui/icons-material/ElectricalServices";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 import { fakeData } from "./data";
@@ -114,6 +115,7 @@ export default function Monthlypaperview() {
 
       <Stack direction="row" spacing={2} sx={{ ml: 4, mr: 4, mt: 2 }}>
         <IndPaper square={false} elevation={20}>
+          <ElectricalServicesIcon color="Alectra" />
           <Typography fontFamily="monospace" variant="h5" fontWeight={"bold"}>
             {currencyFormat(currentMonthData[dataKey[0]])}
           </Typography>

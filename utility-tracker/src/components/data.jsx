@@ -18,6 +18,7 @@ const translations = {
   export const fakeData = [
     {
         month: 'Jan',
+        year: 2024,
         Alectra: 200,
         Bhydro: 400,
         Enbridge: 230,
@@ -25,6 +26,7 @@ const translations = {
     },
     {
         month: 'Feb',
+        year: 2024,
         Alectra: 191,
         Bhydro: 0,
         Enbridge: 210,
@@ -32,6 +34,7 @@ const translations = {
     },
     {
         month: 'Mar',
+        year: 2024,
         Alectra: 150,
         Bhydro: 0,
         Enbridge: 180,
@@ -39,6 +42,7 @@ const translations = {
     },
     {
         month: 'Apr',
+        year: 2024,
         Alectra: 180,
         Bhydro: 380,
         Enbridge: 150,
@@ -46,6 +50,7 @@ const translations = {
     },
     {
         month: 'May',
+        year: 2024,
         Alectra: 170,
         Bhydro: 0,
         Enbridge: 150,
@@ -53,6 +58,7 @@ const translations = {
     },
     {
         month: 'Jun',
+        year: 2024,
         Alectra: 145,
         Bhydro: 0,
         Enbridge: 120,
@@ -60,6 +66,7 @@ const translations = {
     },
     {
         month: 'Jul',
+        year: 2024,
         Alectra: 130,
         Bhydro: 387,
         Enbridge: 110,
@@ -67,6 +74,7 @@ const translations = {
     },
     {
         month: 'Aug',
+        year: 2024,
         Alectra: 115,
         Bhydro: 0,
         Enbridge: 80,
@@ -74,6 +82,7 @@ const translations = {
     },
     {
         month: 'Sep',
+        year: 2024,
         Alectra: 140,
         Bhydro: 0,
         Enbridge: 90,
@@ -81,6 +90,7 @@ const translations = {
     },
     {
         month: 'Oct',
+        year: 2024,
         Alectra: 165,
         Bhydro: 378,
         Enbridge: 105,
@@ -88,6 +98,7 @@ const translations = {
     },
     {
         month: 'Nov',
+        year: 2024,
         Alectra: 176,
         Bhydro: 0,
         Enbridge: 130,
@@ -95,9 +106,26 @@ const translations = {
     },
     {
         month: 'Dec',
+        year: 2024,
         Alectra: 180,
         Bhydro: 0,
         Enbridge: 135,
+        Reliance: 40.50,
+    },
+    {
+        month: 'Jan',
+        year: 2025,
+        Alectra: 180,
+        Bhydro: 450,
+        Enbridge: 220,
+        Reliance: 40.50,
+    },
+    {
+        month: 'Feb',
+        year: 2025,
+        Alectra: 160,
+        Bhydro: 0,
+        Enbridge: 190,
         Reliance: 40.50,
     },
   ];

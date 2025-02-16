@@ -40,9 +40,9 @@ const colorPalette = [
 ];
 
   return (
-    <Stack direction="row" spacing={10} sx={{ ml:4, mr:4, mt:6 }}>
+    <Stack direction="row" spacing={10} sx={{ ml:4, mr:4, mt:2 }}>
     <IndPaper square={false} elevation={10}>
-        <Typography fontWeight="bold" variant="h6">Utility Cost Breakdown</Typography>
+        <Typography fontWeight="bold" variant="h6">Monthly Cost Breakdown</Typography>
         <PieChart
         // colors={palette}
         slotProps={{
