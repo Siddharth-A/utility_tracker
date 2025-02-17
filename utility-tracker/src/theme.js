@@ -28,10 +28,10 @@ export const lightTheme = createTheme({
         default: "#121212",  // Dark background
         paper: "#1e1e1e",
       },
-      Alectra: { main: "#00ff9d" },
-      Bhydro: { main: "#7e37fa" },
-      Enbridge: { main: "#ffc400" },
-      Reliance: { main: "#ff2600" },
+      Alectra: { main: "#aaec89" },
+      Bhydro: { main: "#b689ec" },
+      Enbridge: { main: "#eccd89" },
+      Reliance: { main: "#ec89e6" },
       text: {
         primary: "#ffffff",  // White text for dark mode
       },
