@@ -11,3 +11,4 @@ README file
 7. npm install @mui/icons-material
 8. @mui/x-charts
 9. npm install react-router-dom
+10. update "dev": "vite --host" in package.json to enable view on other devices
