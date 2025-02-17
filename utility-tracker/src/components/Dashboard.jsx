@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles";
 
 import Monthlypaperview from "./Monthlypaperview";
 import Annualpaperview from "./Annualpaperview";
+import Chart from "./Chart";
 
 function Dashboard({ toggleDarkMode }) {
   const theme = useTheme(); // Get the current theme
@@ -18,9 +19,9 @@ function Dashboard({ toggleDarkMode }) {
       }}
     >
       <Monthlypaperview />
-      {/* <Chart /> */}
       <Pie />
       <Annualpaperview />
+      <Chart />
     </Box>
   )
 }

@@ -19,7 +19,7 @@ const translations = {
     {
         month: 'Jan',
         year: 2024,
-        Alectra: 200,
+        Alectra: 300,
         Bhydro: 400,
         Enbridge: 230,
         Reliance: 40.50,
