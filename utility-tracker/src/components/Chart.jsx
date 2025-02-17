@@ -30,8 +30,6 @@ export default function Chart() {
     }
   });
 
-  console.log("Processed Data:", processedData);
-
   return (
     <Box sx={{ p: 1 }}>
       <BarChart

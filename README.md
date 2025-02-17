@@ -12,3 +12,4 @@ README file
 8. @mui/x-charts
 9. npm install react-router-dom
 10. update "dev": "vite --host" in package.json to enable view on other devices
+11. npm install @mui/x-data-grid
