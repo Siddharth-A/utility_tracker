@@ -51,7 +51,7 @@ export default function Chart() {
         }}
         // barLabel="value"
         height={500}
-        margin={{ top: 30, bottom: 60, left:35, right:10 }}
+        margin={{ top: 20, left:35, right:10 }}
         // leftAxis={null}
         grid={{ vertical:true, horizontal:true }}
       />
