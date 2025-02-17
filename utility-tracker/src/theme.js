@@ -11,10 +11,10 @@ export const lightTheme = createTheme({
         default: "#ffffff",  // Light background
         paper: "#f4f4f4",
       },
-      Alectra: { main: "#79C99E" },
-      Bhydro: { main: "#02A9EA" },
-      Enbridge: { main: "#E09F3E" },
-      Reliance: { main: "#F9627D" },
+      Alectra: { main: "#aaec89" },
+      Bhydro: { main: "#b689ec" },
+      Enbridge: { main: "#eccd89" },
+      Reliance: { main: "#ec89e6" },
     },
   });
   
