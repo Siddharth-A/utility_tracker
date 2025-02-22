@@ -18,3 +18,13 @@ to begin front-end: cd frontend/utility-tracker; npm run dev
 9. npm install react-router-dom
 10. update "dev": "vite --host" in package.json to enable view on other devices
 11. npm install @mui/x-data-grid
+
+###################
+DATA PIPELINE
+###################
+1. python3 -m pip install selenium
+2. brew install chromedriver
+3. cd /opt/homebrew/Caskroom/chromedriver/133.0.6943.126/chromedriver-mac-arm64
+4. xattr -d com.apple.quarantine chromedriver
+5. chromedriver --version
+6. 
