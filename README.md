@@ -22,9 +22,16 @@ to begin front-end: cd frontend/utility-tracker; npm run dev
 ###################
 DATA PIPELINE
 ###################
-1. python3 -m pip install selenium
-2. brew install chromedriver
-3. cd /opt/homebrew/Caskroom/chromedriver/133.0.6943.126/chromedriver-mac-arm64
-4. xattr -d com.apple.quarantine chromedriver
-5. chromedriver --version
-6. 
+1. python3 -m venv venv
+2. source venv/bin/activate
+3. nano requirements.txt
+4. pip freeze > requirements.txt
+5.   ==> on target platform, install all packages: pip install -r requirements.txt
+6. python3 -m pip install selenium
+7. brew install chromedriver
+8. cd /opt/homebrew/Caskroom/chromedriver/133.0.6943.126/chromedriver-mac-arm64
+9. xattr -d com.apple.quarantine chromedriver
+10. chromedriver --version
+11. 
+
+x. pip freeze > requirements.txt (to capture all packages)
