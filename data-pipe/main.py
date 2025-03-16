@@ -3,8 +3,11 @@
 import time
 from webdriver import MyDriver
 from selenium.webdriver.common.by import By
+from config import logger
 
 def main(driver):
+    logger.info("Begin data extraction")
+
     driver.get("https://www.google.ca")
     time.sleep(5)
 
@@ -12,7 +15,6 @@ def main(driver):
     search_box.send_keys("Selenium WebDriver on macOS")
     search_box.submit()
     time.sleep(5)
-    driver.implicitly_wait(5)
 
 if __name__ == "__main__":
     my_driver = MyDriver()
