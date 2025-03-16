@@ -32,6 +32,6 @@ DATA PIPELINE
 8. cd /opt/homebrew/Caskroom/chromedriver/133.0.6943.126/chromedriver-mac-arm64
 9. xattr -d com.apple.quarantine chromedriver
 10. chromedriver --version
-11. 
+11. python -m pip install python-dotenv (to store password and username)
 
 x. pip freeze > requirements.txt (to capture all packages)
