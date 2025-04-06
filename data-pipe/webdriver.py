@@ -17,6 +17,8 @@ class MyDriver():
         chrome_options.add_argument("--disable-infobars")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-notifications")
+        chrome_options.add_argument('--user-data-dir=/Users/Shared/D/Projects/25utility_tracker/utility_tracker/data-pipe/user-profile') 
+        chrome_options.add_argument('--profile-directory=Profile 2')
         chrome_options.add_argument('--disable-blink-features=AutomationControlled')
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])

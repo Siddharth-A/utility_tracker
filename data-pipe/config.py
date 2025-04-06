@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 filename = os.path.basename(os.getcwd())
 
 # Logging configuration
-LOG_FILE = "utility_tracker.log"
+LOG_FILE = "utility-tracker.log"
 
 logging.basicConfig(
     level=logging.INFO,

@@ -7,12 +7,12 @@ from selenium.webdriver.common.by import By
 from get_utility_bill import *
 from config import logger, PROVIDERS
 
-def generate_bill_entry(current_bill):
+def generate_bill_entry():
     logger.info("Generate bill entry dictionary")
     hydro_bill = alectra_bill = enbridge_bill = reliance_bill = 0
     current_month = datetime.now().strftime("%b")
     current_year = datetime.now().year
-    
+
     current_bill = {
         "month": current_month,
         "year": current_year,
@@ -20,9 +20,11 @@ def generate_bill_entry(current_bill):
         "Bhydro": hydro_bill,
         "Enbridge": enbridge_bill,
         "Reliance": reliance_bill
-    }
+        }
 
-def get_utility_bills(current_bill):
+    return current_bill
+
+def get_utility_bills(current_bill, driver):
     logger.info("Get utility service bills")
     for provider,details in PROVIDERS.items():
         if provider == "Bhydro":
@@ -36,10 +38,8 @@ def get_utility_bills(current_bill):
 
 def main(driver):
     logger.info("Begin data extraction pipeline")
-
-    current_bill = {}
-    generate_bill_entry(current_bill)
-    get_utility_bills(current_bill)
+    current_bill = generate_bill_entry()
+    get_utility_bills(current_bill, driver)
     print(current_bill)
     
 

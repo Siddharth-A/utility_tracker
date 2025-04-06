@@ -5,14 +5,14 @@ from config import logger
 
 def get_hydro_bill(driver, details):
     driver.get(details['url'])
-    time.sleep(5)
+    time.sleep(2)
     user = driver.find_element(By.NAME, "username")
     user.send_keys(details['username'])
     password = driver.find_element(By.NAME, "password")
     password.send_keys(details['password'])
     password.submit()
-    time.sleep(20)
-    #search hotmail, get verification code and hit verify button next
+
+    time.sleep(40)
 
     return 0
 
