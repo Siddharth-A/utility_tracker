@@ -34,22 +34,22 @@ RELIANCE_PASSWORD = os.getenv("RELIANCE_PASSWORD")
 
 # Provider dictionary
 PROVIDERS = {
-    "hydro": {
-        "url": "https://google.ca",
+    "Bhydro": {
+        "url": "https://peelregion.idoxs.ca/authentication/login",
         "username": HYDRO_USERNAME,
         "password": HYDRO_PASSWORD,
     },
-    "alectra": {
+    "Alectra": {
         "url": "https://google.ca",
         "username": ALECTRA_USERNAME,
         "password": ALECTRA_PASSWORD,
     },
-    "enbridge": {
+    "Enbridge": {
         "url": "https://google.ca",
         "username": ENBRIDGE_USERNAME,
         "password": ENBRIDGE_PASSWORD,
     },
-    "reliance": {
+    "Reliance": {
         "url": "https://google.ca",
         "username": RELIANCE_USERNAME,
         "password": RELIANCE_PASSWORD,

@@ -4,11 +4,15 @@ import time
 from webdriver import MyDriver
 from datetime import datetime
 from selenium.webdriver.common.by import By
+from get_utility_bill import *
 from config import logger, PROVIDERS
 
-def generate_bill(alectra_bill, hydro_bill, enbridge_bill, reliance_bill):
+def generate_bill_entry(current_bill):
+    logger.info("Generate bill entry dictionary")
+    hydro_bill = alectra_bill = enbridge_bill = reliance_bill = 0
     current_month = datetime.now().strftime("%b")
     current_year = datetime.now().year
+    
     current_bill = {
         "month": current_month,
         "year": current_year,
@@ -18,18 +22,26 @@ def generate_bill(alectra_bill, hydro_bill, enbridge_bill, reliance_bill):
         "Reliance": reliance_bill
     }
 
-def main(driver):
-    logger.info("Begin data extraction")
-
+def get_utility_bills(current_bill):
+    logger.info("Get utility service bills")
     for provider,details in PROVIDERS.items():
-        if provider == "hydro":
-            get_hydro_bill(driver, details)
-        if provider == "alectra":
-            get_alectra_bill(driver, details)
-        if provider == "enbridge":
-            get_enbridge_bill(driver, details)
-        if provider == "reliance":
-            get_reliance_bill(driver, details)
+        if provider == "Bhydro":
+            current_bill[provider] = get_hydro_bill(driver, details)
+        if provider == "Alectra":
+            current_bill[provider] = get_alectra_bill(driver, details)
+        if provider == "Enbridge":
+            current_bill[provider] = get_enbridge_bill(driver, details)
+        if provider == "Reliance":
+            current_bill[provider] = get_reliance_bill(driver, details)
+
+def main(driver):
+    logger.info("Begin data extraction pipeline")
+
+    current_bill = {}
+    generate_bill_entry(current_bill)
+    get_utility_bills(current_bill)
+    print(current_bill)
+    
 
     # driver.get("https://www.google.ca")
     # time.sleep(5)

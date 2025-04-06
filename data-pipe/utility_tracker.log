@@ -1,9 +1,0 @@
-2025-03-16 15:17:28 - INFO - config.py - Configuration setup complete
-2025-03-16 15:17:29 - WARNING - selenium_manager.py - The chromedriver version (133.0.6943.126) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (134.0.6998.89); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry
-2025-03-16 15:17:30 - INFO - main.py - Begin data extraction
-2025-03-16 15:18:31 - INFO - config.py - Configuration setup complete
-2025-03-16 15:18:31 - WARNING - selenium_manager.py - The chromedriver version (133.0.6943.126) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (134.0.6998.89); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry
-2025-03-16 15:18:33 - INFO - main.py - Begin data extraction
-2025-03-16 15:19:01 - INFO - config.py - Configuration setup complete
-2025-03-16 15:19:01 - WARNING - selenium_manager.py - The chromedriver version (133.0.6943.126) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (134.0.6998.89); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry
-2025-03-16 15:19:02 - INFO - main.py - Begin data extraction
