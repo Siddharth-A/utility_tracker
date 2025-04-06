@@ -40,7 +40,7 @@ PROVIDERS = {
         "password": HYDRO_PASSWORD,
     },
     "Alectra": {
-        "url": "https://google.ca",
+        "url": "https://myalectra.alectrautilities.com/portal/#/login",
         "username": ALECTRA_USERNAME,
         "password": ALECTRA_PASSWORD,
     },

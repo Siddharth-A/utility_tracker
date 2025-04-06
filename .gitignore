@@ -1,2 +1,4 @@
 node_modules
 .env
+data-pipe/user-profile
+data-pipe/utility-tracker.log
