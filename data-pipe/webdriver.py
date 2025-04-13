@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 class MyDriver():
     def __init__(self):
         self.driver = None
@@ -19,17 +20,21 @@ class MyDriver():
         chrome_options.add_argument("--disable-infobars")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-notifications")
-        chrome_options.add_argument('--user-data-dir=/Users/Shared/D/Projects/25utility_tracker/utility_tracker/data-pipe/user-profile') 
+        chrome_options.add_argument(
+            '--user-data-dir=/Users/Shared/D/Projects/25utility_tracker/utility_tracker/data-pipe/user-profile')
         chrome_options.add_argument('--profile-directory=Profile 2')
-        chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+        chrome_options.add_argument(
+            '--disable-blink-features=AutomationControlled')
         chrome_options.add_experimental_option('useAutomationExtension', False)
-        chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        chrome_options.add_experimental_option(
+            'excludeSwitches', ['enable-automation'])
 
         # chrome_options.binary_location = '/usr/bin/chromium'
-        chrome_service=Service(ChromeDriverManager().install())
-        
+        chrome_service = Service(ChromeDriverManager().install())
+
         # self.driver = webdriver.Chrome(service=service, options=chrome_options)
-        self.driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+        self.driver = webdriver.Chrome(
+            service=chrome_service, options=chrome_options)
 
         return self.driver
 

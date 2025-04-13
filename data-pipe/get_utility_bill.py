@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 current_month = datetime.now().strftime("%b")
 current_year = datetime.now().year
 
+
 def read_element_safely(driver, by, value, default):
     try:
         return driver.find_element(by, value)
@@ -23,7 +24,7 @@ def get_hydro_bill(driver, details):
     hydro_bill = 0
     driver.get(details['url'])
     time.sleep(2)
-    
+
     # login
     user = driver.find_element(By.NAME, "username")
     user.send_keys(details['username'])
@@ -37,7 +38,7 @@ def get_hydro_bill(driver, details):
     bill_history.click()
     time.sleep(5)
 
-    # select bill date range to 30days 
+    # select bill date range to 30days
     # this is done to show only latest bill if any since bill data cannot be fetched from a static ID
     select_date_range = Select(driver.find_element(By.ID, "main_ddlRangeDays"))
     select_date_range.select_by_value("30")
@@ -45,11 +46,14 @@ def get_hydro_bill(driver, details):
 
     # read bill date and amount
     # use By.XPATH to account for dynamic ID allocated to billdate and amountdue
-    bill_date_element = read_element_safely(driver, By.XPATH, ("//span[contains(@id,'lblBillDate')]"), default = datetime.now())
+    bill_date_element = read_element_safely(
+        driver, By.XPATH, ("//span[contains(@id,'lblBillDate')]"), default=datetime.now())
     bill_date = bill_date_element.text
-    bill_amount_element = read_element_safely(driver, By.XPATH, ("//span[contains(@id,'lblAmountDue')]"), default = 0)
+    bill_amount_element = read_element_safely(
+        driver, By.XPATH, ("//span[contains(@id,'lblAmountDue')]"), default=0)
     bill_amount = bill_amount_element.text
-    logger.info("Peel water bill date: %s bill value: %s", bill_date, bill_amount)
+    logger.info("Peel water bill date: %s bill value: %s",
+                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
@@ -62,17 +66,19 @@ def get_hydro_bill(driver, details):
 
     return hydro_bill
 
+
 def get_alectra_bill(driver, details):
     alectra_bill = 0
     driver.get(details['url'])
     time.sleep(2)
-    
+
     # login
     user = driver.find_element(By.NAME, "username")
     user.send_keys(details['username'])
     password = driver.find_element(By.NAME, "password")
     password.send_keys(details['password'])
-    login_button = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Click Here to Sign In"]')
+    login_button = driver.find_element(
+        By.CSS_SELECTOR, 'button[aria-label="Click Here to Sign In"]')
     login_button.click()
     time.sleep(5)
 
@@ -81,11 +87,14 @@ def get_alectra_bill(driver, details):
     time.sleep(5)
 
     # read bill date and amount
-    bill_date_element = read_element_safely(driver, By.CLASS_NAME, "dueDate", default = datetime.now())
+    bill_date_element = read_element_safely(
+        driver, By.CLASS_NAME, "dueDate", default=datetime.now())
     bill_date = bill_date_element.text
-    bill_amount_element = read_element_safely(driver, By.ID, "totalAmountDue", default = 0)
+    bill_amount_element = read_element_safely(
+        driver, By.ID, "totalAmountDue", default=0)
     bill_amount = bill_amount_element.text
-    logger.info("Alectra electricity bill date: %s bill value: $%s", bill_date, bill_amount)
+    logger.info("Alectra electricity bill date: %s bill value: $%s",
+                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
@@ -96,6 +105,7 @@ def get_alectra_bill(driver, details):
         alectra_bill = bill_amount
 
     return alectra_bill
+
 
 def get_enbridge_bill(driver, details):
     enbridge_bill = 0
@@ -115,7 +125,7 @@ def get_enbridge_bill(driver, details):
     driver.get("https://myaccount.enbridgegas.com/My-Account/Account-Activity")
     time.sleep(5)
 
-    # select bill date range to 30days 
+    # select bill date range to 30days
     select_date_range = Select(driver.find_element(By.ID, "periodList"))
     select_date_range.select_by_value("CURMONTH")
     filter_button = driver.find_element(By.ID, 'filterButton')
@@ -123,13 +133,16 @@ def get_enbridge_bill(driver, details):
     time.sleep(5)
 
     # read bill date and amount
-    bill_date_element = read_element_safely(driver, By.CSS_SELECTOR, "p.down-date-list", default = datetime.now())
+    bill_date_element = read_element_safely(
+        driver, By.CSS_SELECTOR, "p.down-date-list", default=datetime.now())
     bill_date = bill_date_element.text
-    bill_amount_element = read_element_safely(driver, By.CSS_SELECTOR, "div.download-details-list", default = 0)
+    bill_amount_element = read_element_safely(
+        driver, By.CSS_SELECTOR, "div.download-details-list", default=0)
     bill_amount = bill_amount_element.text
     match = re.search(r"\$([0-9,.]+)", bill_amount)
     bill_amount = match.group(1) if match else "$0"
-    logger.info("Alectra electricity bill date: %s bill value: %s", bill_date, bill_amount)
+    logger.info("Alectra electricity bill date: %s bill value: $%s",
+                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
@@ -140,6 +153,7 @@ def get_enbridge_bill(driver, details):
         enbridge_bill = bill_amount
 
     return enbridge_bill
+
 
 def get_reliance_bill(driver, details):
     return 0
