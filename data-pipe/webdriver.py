@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 class MyDriver():
     def __init__(self):
@@ -14,6 +15,7 @@ class MyDriver():
         # chrome_options.add_argument("--headless")  # Run in headless mode
         # chrome_options.add_argument("--no-sandbox")
         # chrome_options.add_argument"--disable-dev-shm-usage")
+        chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument("--disable-infobars")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-notifications")
@@ -24,10 +26,10 @@ class MyDriver():
         chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
 
         # chrome_options.binary_location = '/usr/bin/chromium'
-        # service = Service('/usr/bin/chromedriver')
+        chrome_service=Service(ChromeDriverManager().install())
         
         # self.driver = webdriver.Chrome(service=service, options=chrome_options)
-        self.driver = webdriver.Chrome(options=chrome_options)
+        self.driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
         return self.driver
 

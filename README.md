@@ -33,5 +33,6 @@ DATA PIPELINE
 9. xattr -d com.apple.quarantine chromedriver
 10. chromedriver --version
 11. python -m pip install python-dotenv (to store password and username)
+12. pip install webdriver-manager (to resolve selenium driver issues)
 
 x. pip freeze > requirements.txt (to capture all packages)
