@@ -45,7 +45,7 @@ PROVIDERS = {
         "password": ALECTRA_PASSWORD,
     },
     "Enbridge": {
-        "url": "https://google.ca",
+        "url": "https://myaccount.enbridgegas.com/",
         "username": ENBRIDGE_USERNAME,
         "password": ENBRIDGE_PASSWORD,
     },

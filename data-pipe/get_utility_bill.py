@@ -1,3 +1,4 @@
+import re
 import time
 from config import logger
 from datetime import datetime
@@ -97,7 +98,48 @@ def get_alectra_bill(driver, details):
     return alectra_bill
 
 def get_enbridge_bill(driver, details):
-    return 0
+    enbridge_bill = 0
+    driver.get(details['url'])
+    time.sleep(2)
+
+    # login
+    user = driver.find_element(By.NAME, "username")
+    user.send_keys(details['username'])
+    password = driver.find_element(By.NAME, "password")
+    password.send_keys(details['password'])
+    login_button = driver.find_element(By.ID, 'okta-signin-submit')
+    login_button.click()
+    time.sleep(15)
+
+    # go to account activity page
+    driver.get("https://myaccount.enbridgegas.com/My-Account/Account-Activity")
+    time.sleep(5)
+
+    # select bill date range to 30days 
+    select_date_range = Select(driver.find_element(By.ID, "periodList"))
+    select_date_range.select_by_value("CURMONTH")
+    filter_button = driver.find_element(By.ID, 'filterButton')
+    filter_button.click()
+    time.sleep(5)
+
+    # read bill date and amount
+    bill_date_element = read_element_safely(driver, By.CSS_SELECTOR, "p.down-date-list", default = datetime.now())
+    bill_date = bill_date_element.text
+    bill_amount_element = read_element_safely(driver, By.CSS_SELECTOR, "div.download-details-list", default = 0)
+    bill_amount = bill_amount_element.text
+    match = re.search(r"\$([0-9,.]+)", bill_amount)
+    bill_amount = match.group(1) if match else "$0"
+    logger.info("Alectra electricity bill date: %s bill value: %s", bill_date, bill_amount)
+
+    # process bill date and value
+    bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
+    bill_date = datetime.strptime(bill_date, "%m/%d/%Y")
+    bill_date_month = bill_date.strftime("%b")
+    bill_date_year = bill_date.year
+    if (bill_date_month == current_month and bill_date_year == current_year):
+        enbridge_bill = bill_amount
+
+    return enbridge_bill
 
 def get_reliance_bill(driver, details):
     return 0
