@@ -4,9 +4,7 @@ from config import logger
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support import expected_conditions as EC
 
 
 current_month = datetime.now().strftime("%b")
@@ -20,7 +18,7 @@ def read_element_safely(driver, by, value, default):
         return default
 
 
-def get_hydro_bill(driver, details):
+def hydro(driver, details):
     hydro_bill = 0
     driver.get(details['url'])
     time.sleep(2)
@@ -67,7 +65,7 @@ def get_hydro_bill(driver, details):
     return hydro_bill
 
 
-def get_alectra_bill(driver, details):
+def alectra(driver, details):
     alectra_bill = 0
     driver.get(details['url'])
     time.sleep(2)
@@ -107,7 +105,7 @@ def get_alectra_bill(driver, details):
     return alectra_bill
 
 
-def get_enbridge_bill(driver, details):
+def enbridge(driver, details):
     enbridge_bill = 0
     driver.get(details['url'])
     time.sleep(2)
@@ -155,5 +153,5 @@ def get_enbridge_bill(driver, details):
     return enbridge_bill
 
 
-def get_reliance_bill(driver, details):
+def reliance(driver, details):
     return 0
