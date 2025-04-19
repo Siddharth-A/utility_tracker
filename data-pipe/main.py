@@ -9,7 +9,7 @@ from get_utility_bill import hydro, alectra, enbridge, reliance
 def generate_bill_entry():
     logger.info("Generate bill entry dictionary")
     hydro_bill = alectra_bill = enbridge_bill = reliance_bill = 0
-    current_month = datetime.now().strftime("%b")
+    current_month = datetime.now().strftime("%m")
     current_year = datetime.now().year
 
     current_bill = {

@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 
 
-current_month = datetime.now().strftime("%b")
+current_month = datetime.now().strftime("%m")
 current_year = datetime.now().year
 
 
@@ -50,15 +50,16 @@ def hydro(driver, details):
     bill_amount_element = read_element_safely(
         driver, By.XPATH, ("//span[contains(@id,'lblAmountDue')]"), default=0)
     bill_amount = bill_amount_element.text
-    logger.info("Peel water bill date: %s bill value: %s",
-                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
     bill_date = datetime.strptime(bill_date, "%B %d, %Y")
-    bill_date_month = bill_date.strftime("%b")
+    bill_date_month = bill_date.strftime("%m")
     bill_date_year = bill_date.year
-    # if (bill_date_year == current_year):
+    formatted_date = bill_date.strftime("%m/%d/%Y")
+    logger.info("Peel water bill date: %s bill value: %s",
+                formatted_date, bill_amount)
+
     if (bill_date_month == current_month and bill_date_year == current_year):
         hydro_bill = bill_amount
 
@@ -91,14 +92,16 @@ def alectra(driver, details):
     bill_amount_element = read_element_safely(
         driver, By.ID, "totalAmountDue", default=0)
     bill_amount = bill_amount_element.text
-    logger.info("Alectra electricity bill date: %s bill value: $%s",
-                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
     bill_date = datetime.strptime(bill_date, "%B %d, %Y")
-    bill_date_month = bill_date.strftime("%b")
+    bill_date_month = bill_date.strftime("%m")
     bill_date_year = bill_date.year
+    formatted_date = bill_date.strftime("%m/%d/%Y")
+    logger.info("Alectra electricity bill date: %s bill value: %s",
+                formatted_date, bill_amount)
+
     if (bill_date_month == current_month and bill_date_year == current_year):
         alectra_bill = bill_amount
 
@@ -139,14 +142,16 @@ def enbridge(driver, details):
     bill_amount = bill_amount_element.text
     match = re.search(r"\$([0-9,.]+)", bill_amount)
     bill_amount = match.group(1) if match else "$0"
-    logger.info("Alectra electricity bill date: %s bill value: $%s",
-                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
     bill_date = datetime.strptime(bill_date, "%m/%d/%Y")
-    bill_date_month = bill_date.strftime("%b")
+    bill_date_month = bill_date.strftime("%m")
     bill_date_year = bill_date.year
+    formatted_date = bill_date.strftime("%m/%d/%Y")
+    logger.info("Enbridge gas bill date: %s bill value: $%s",
+                formatted_date, bill_amount)
+
     if (bill_date_month == current_month and bill_date_year == current_year):
         enbridge_bill = bill_amount
 
@@ -174,14 +179,16 @@ def reliance(driver, details):
     bill_amount_element = read_element_safely(
         driver, By.ID, "main_lblAmountDueValue", default=0)
     bill_amount = bill_amount_element.text
-    logger.info("Reliance heater rental bill date: %s bill value: $%s",
-                bill_date, bill_amount)
 
     # process bill date and value
     bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
     bill_date = datetime.strptime(bill_date, "%b %d, %Y")
-    bill_date_month = bill_date.strftime("%b")
+    bill_date_month = bill_date.strftime("%m")
     bill_date_year = bill_date.year
+    formatted_date = bill_date.strftime("%m/%d/%Y")
+    logger.info("Reliance heater bill date: %s bill value: $%s",
+                formatted_date, bill_amount)
+
     if (bill_date_month == current_month and bill_date_year == current_year):
         reliance_bill = bill_amount
 
