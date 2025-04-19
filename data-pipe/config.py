@@ -50,7 +50,7 @@ PROVIDERS = {
         "password": ENBRIDGE_PASSWORD,
     },
     "Reliance": {
-        "url": "https://google.ca",
+        "url": "https://myreliancehome.com/Reliance/SignIn.aspx",
         "username": RELIANCE_USERNAME,
         "password": RELIANCE_PASSWORD,
     },

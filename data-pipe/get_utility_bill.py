@@ -154,4 +154,35 @@ def enbridge(driver, details):
 
 
 def reliance(driver, details):
-    return 0
+    reliance_bill = 0
+    driver.get(details['url'])
+    time.sleep(2)
+
+    # login
+    user = driver.find_element(By.ID, "main_UID")
+    user.send_keys(details['username'])
+    password = driver.find_element(By.ID, "main_PWD")
+    password.send_keys(details['password'])
+    login_button = driver.find_element(By.ID, "main_btnSubmit")
+    login_button.click()
+    time.sleep(5)
+
+    # read bill date and amount
+    bill_date_element = read_element_safely(
+        driver, By.ID, "main_lblBillDateValue", default=datetime.now())
+    bill_date = bill_date_element.text
+    bill_amount_element = read_element_safely(
+        driver, By.ID, "main_lblAmountDueValue", default=0)
+    bill_amount = bill_amount_element.text
+    logger.info("Alectra electricity bill date: %s bill value: $%s",
+                bill_date, bill_amount)
+
+    # process bill date and value
+    bill_amount = float(bill_amount.replace("$", "").replace(",", ""))
+    bill_date = datetime.strptime(bill_date, "%b %d, %Y")
+    bill_date_month = bill_date.strftime("%b")
+    bill_date_year = bill_date.year
+    if (bill_date_month == current_month and bill_date_year == current_year):
+        reliance_bill = bill_amount
+
+    return reliance_bill
