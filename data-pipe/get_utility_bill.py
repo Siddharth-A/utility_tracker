@@ -174,7 +174,7 @@ def reliance(driver, details):
     bill_amount_element = read_element_safely(
         driver, By.ID, "main_lblAmountDueValue", default=0)
     bill_amount = bill_amount_element.text
-    logger.info("Alectra electricity bill date: %s bill value: $%s",
+    logger.info("Reliance heater rental bill date: %s bill value: $%s",
                 bill_date, bill_amount)
 
     # process bill date and value
