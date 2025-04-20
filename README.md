@@ -35,4 +35,10 @@ DATA PIPELINE
 11. python -m pip install python-dotenv (to store password and username)
 12. pip install webdriver-manager (to resolve selenium driver issues)
 
+###################
+DATABASE
+###################
+1. python3 -m pip install "pymongo[srv]"
+2. create account on mongodb ATLAS (hosts db in cloud instead of local machine)
+
 x. pip freeze > requirements.txt (to capture all packages)

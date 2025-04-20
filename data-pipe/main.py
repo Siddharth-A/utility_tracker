@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from webdriver import MyDriver
-from config import logger, PROVIDERS
+from config import logger, PROVIDERS, collection_table
 from get_utility_bill import hydro, alectra, enbridge, reliance
 
 
@@ -37,11 +37,39 @@ def get_utility_bills(current_bill, driver):
             current_bill[provider] = reliance(driver, details)
 
 
+def fetch_last_entry():
+    logger.info("Fetch last entry into database")
+    last_entry = collection_table.find_one(sort=[("_id", -1)])
+    return last_entry
+
+
+def push_to_database(current_bill, force_push=False):
+    logger.info("Push current utility bill value to database")
+    last_entry = fetch_last_entry()
+
+    if ((last_entry["month"] != current_bill["month"] and last_entry["year"] != current_bill["year"]) or force_push):
+        collection_table.insert_one(current_bill)
+    else:
+        logger.info(
+            "Duplicate database entry found! current bill will not be pushed")
+
+
+def get_all_entries():
+    logger.info("Fetch all database entries")
+    all_entries = list(collection_table.find())
+    for entry in all_entries:
+        print(entry)
+    return all_entries
+
+
 def main(driver):
     logger.info("Begin data extraction pipeline")
     current_bill = generate_bill_entry()
     get_utility_bills(current_bill, driver)
     print(current_bill)
+    force_push = False
+    push_to_database(current_bill, force_push)
+    # get_all_entries()
 
 
 if __name__ == "__main__":

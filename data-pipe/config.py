@@ -1,6 +1,8 @@
 import os
 import logging
 from dotenv import load_dotenv
+from pymongo.server_api import ServerApi
+from pymongo.mongo_client import MongoClient
 
 filename = os.path.basename(os.getcwd())
 
@@ -29,8 +31,12 @@ ENBRIDGE_USERNAME = os.getenv("ENBRIDGE_USERNAME")
 ENBRIDGE_PASSWORD = os.getenv("ENBRIDGE_PASSWORD")
 RELIANCE_USERNAME = os.getenv("RELIANCE_USERNAME")
 RELIANCE_PASSWORD = os.getenv("RELIANCE_PASSWORD")
+DATABASE_URI = os.getenv("DATABASE_URI")
 
 # Database configuration
+client = MongoClient(DATABASE_URI, server_api=ServerApi('1'))
+database = client["utility_bills"]
+collection_table = database["monthly_bills"]
 
 # Provider dictionary
 PROVIDERS = {
