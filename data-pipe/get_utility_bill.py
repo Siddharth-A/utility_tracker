@@ -2,6 +2,7 @@ import re
 import time
 from config import logger
 from datetime import datetime
+from unittest.mock import MagicMock
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
@@ -9,6 +10,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 current_month = datetime.now().strftime("%m")
 current_year = datetime.now().year
+default_date = MagicMock()
+default_date.text = "Jan 1, 2000"
 
 
 def read_element_safely(driver, by, value, default):
@@ -39,13 +42,13 @@ def hydro(driver, details):
     # select bill date range to 30days
     # this is done to show only latest bill if any since bill data cannot be fetched from a static ID
     select_date_range = Select(driver.find_element(By.ID, "main_ddlRangeDays"))
-    select_date_range.select_by_value("30")
+    select_date_range.select_by_value("180")
     time.sleep(5)
 
     # read bill date and amount
     # use By.XPATH to account for dynamic ID allocated to billdate and amountdue
     bill_date_element = read_element_safely(
-        driver, By.XPATH, ("//span[contains(@id,'lblBillDate')]"), default=datetime.now())
+        driver, By.XPATH, ("//span[contains(@id,'lblBillDate')]"), default=default_date)
     bill_date = bill_date_element.text
     bill_amount_element = read_element_safely(
         driver, By.XPATH, ("//span[contains(@id,'lblAmountDue')]"), default=0)
@@ -87,7 +90,7 @@ def alectra(driver, details):
 
     # read bill date and amount
     bill_date_element = read_element_safely(
-        driver, By.CLASS_NAME, "dueDate", default=datetime.now())
+        driver, By.CLASS_NAME, "dueDate", default=default_date)
     bill_date = bill_date_element.text
     bill_amount_element = read_element_safely(
         driver, By.ID, "totalAmountDue", default=0)
@@ -126,7 +129,10 @@ def enbridge(driver, details):
     driver.get("https://myaccount.enbridgegas.com/My-Account/Account-Activity")
     time.sleep(5)
 
-    # select bill date range to 30days
+    # select activity type to payments bill date range to 30days
+    select_actitivity_type = Select(
+        driver.find_element(By.ID, "activityFiltered"))
+    select_actitivity_type.select_by_value("Payments")
     select_date_range = Select(driver.find_element(By.ID, "periodList"))
     select_date_range.select_by_value("CURMONTH")
     filter_button = driver.find_element(By.ID, 'filterButton')
@@ -135,7 +141,7 @@ def enbridge(driver, details):
 
     # read bill date and amount
     bill_date_element = read_element_safely(
-        driver, By.CSS_SELECTOR, "p.down-date-list", default=datetime.now())
+        driver, By.CLASS_NAME, "down-date-list", default=default_date)
     bill_date = bill_date_element.text
     bill_amount_element = read_element_safely(
         driver, By.CSS_SELECTOR, "div.download-details-list", default=0)
@@ -174,7 +180,7 @@ def reliance(driver, details):
 
     # read bill date and amount
     bill_date_element = read_element_safely(
-        driver, By.ID, "main_lblBillDateValue", default=datetime.now())
+        driver, By.ID, "main_lblBillDateValue", default=default_date)
     bill_date = bill_date_element.text
     bill_amount_element = read_element_safely(
         driver, By.ID, "main_lblAmountDueValue", default=0)
