@@ -1,8 +1,31 @@
 README file
 
+########################
+HIGH LEVEL ARCHITECTURE
+########################
+
++---------------------+
+|     main.py         |
+|  (Selenium scraper) |
++----------+----------+
+           |
+           v
++---------------------+
+|     MongoDB         |
+|  (Stores bills)     |
++----------+----------+
+           |
+           v
++---------------------+        +-----------------------+
+|    Express.js API   +------->+   Vite.js Frontend    |
+|  (GET /api/bills)   |        |  (Displays dashboard) |
++---------------------+        +-----------------------+
+
+
 ###################
 FRONT-END
 ###################
+
 to begin front-end: cd frontend/utility-tracker; npm run dev
 
 1. sudo npm install -g create-vite
