@@ -1,8 +1,9 @@
-README file
+#  UTILITY TRACKER
 
-########################
-HIGH LEVEL ARCHITECTURE
-########################
+this project fetches utility bills from various utility sites, pushes it into database and displays it using a webapp GUI.
+
+## ARCHITECTURE
+
 ```
 +---------------------+
 |     main.py         |
@@ -22,9 +23,9 @@ HIGH LEVEL ARCHITECTURE
 +---------------------+        +-----------------------+
 ```
 
-###################
-FRONT-END
-###################
+## STEPS WHILE BUILDING PROJECT
+
+### FRONT-END
 
 to begin front-end: cd frontend/utility-tracker; npm run dev
 
@@ -42,9 +43,8 @@ to begin front-end: cd frontend/utility-tracker; npm run dev
 10. update "dev": "vite --host" in package.json to enable view on other devices
 11. npm install @mui/x-data-grid
 
-###################
-DATA PIPELINE
-###################
+### DATA PIPELINE
+
 1. python3 -m venv venv
 2. source venv/bin/activate
 3. nano requirements.txt
@@ -58,9 +58,8 @@ DATA PIPELINE
 11. python -m pip install python-dotenv (to store password and username)
 12. pip install webdriver-manager (to resolve selenium driver issues)
 
-###################
-DATABASE
-###################
+### DATABASE
+
 1. python3 -m pip install "pymongo[srv]"
 2. create account on mongodb ATLAS (hosts db in cloud instead of local machine)
 
