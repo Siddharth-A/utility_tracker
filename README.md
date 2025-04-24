@@ -3,7 +3,7 @@ README file
 ########################
 HIGH LEVEL ARCHITECTURE
 ########################
-
+```
 +---------------------+
 |     main.py         |
 |  (Selenium scraper) |
@@ -20,7 +20,7 @@ HIGH LEVEL ARCHITECTURE
 |    Express.js API   +------->+   Vite.js Frontend    |
 |  (GET /api/bills)   |        |  (Displays dashboard) |
 +---------------------+        +-----------------------+
-
+```
 
 ###################
 FRONT-END
