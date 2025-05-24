@@ -72,19 +72,19 @@ export default function Monthlypaperview() {
         <TotPaper square={false} elevation={20}>
           <Grid2 container direction="column" sx={{ mt: 4, mb: 4 }}>
             <Grid2 container direction="row">
-              <Grid2 item size={5}>
+              <Grid2 size={5}>
                 <Typography variant="body1">
                   {currentMonth}'s total bill:
                 </Typography>
               </Grid2>
-              <Grid2 item size={2}></Grid2>
-              <Grid2 item size={5}>
+              <Grid2 size={2}></Grid2>
+              <Grid2 size={5}>
                 <Typography variant="body1">MoM change %:</Typography>
               </Grid2>
             </Grid2>
 
             <Grid2 container direction="row">
-              <Grid2 item size={5}>
+              <Grid2 size={5}>
                 <Typography
                   fontFamily="monospace"
                   variant="h4"
@@ -93,8 +93,8 @@ export default function Monthlypaperview() {
                   {currencyFormat(totalBill)}
                 </Typography>
               </Grid2>
-              <Grid2 item size={2}></Grid2>
-              <Grid2 item size={5}>
+              <Grid2 size={2}></Grid2>
+              <Grid2 size={5}>
                 <Typography
                   fontFamily="monospace"
                   variant="h4"
