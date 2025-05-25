@@ -7,7 +7,7 @@ from pymongo.mongo_client import MongoClient
 filename = os.path.basename(os.getcwd())
 
 # Logging configuration
-LOG_FILE = "utility-tracker.log"
+LOG_FILE = "datapipe.log"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -37,6 +37,7 @@ DATABASE_URI = os.getenv("DATABASE_URI")
 client = MongoClient(DATABASE_URI, server_api=ServerApi('1'))
 database = client["utility_bills"]
 collection_table = database["monthly_bills"]
+
 
 # Provider dictionary
 PROVIDERS = {
