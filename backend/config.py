@@ -16,7 +16,7 @@ database = client["utility_bills"]
 collection_table = database["monthly_bills"]
 
 # Logging configuration
-LOG_FILE = "backend.log"
+LOG_FILE = "../python.log"
 
 logging.basicConfig(
     level=logging.INFO,

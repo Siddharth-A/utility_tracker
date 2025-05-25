@@ -7,7 +7,7 @@ from pymongo.mongo_client import MongoClient
 filename = os.path.basename(os.getcwd())
 
 # Logging configuration
-LOG_FILE = "datapipe.log"
+LOG_FILE = "../python.log"
 
 logging.basicConfig(
     level=logging.INFO,
