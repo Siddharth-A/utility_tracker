@@ -1,10 +1,24 @@
 #!/usr/bin/env python3
 
+import time
+import argparse
 from datetime import datetime
 from webdriver import MyDriver
 from config import logger, PROVIDERS, collection_table
 from get_utility_bill import hydro, alectra, enbridge, reliance
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Utility Tracker Data Pipeline')
+    parser.add_argument('--update-cookies', default=False, action='store_true', help='Flag to update cookies before execution')
+    return parser.parse_args()
+
+def update_cookies(args, driver):
+    logger.info("Update cookies for the webdriver?: ")
+    if args.update_cookies:
+        logger.info("Updating...")
+        time.sleep(500)
+    else:
+        logger.info("Skipping...")
 
 def generate_bill_entry():
     logger.info("Generate bill entry dictionary")
@@ -47,7 +61,7 @@ def push_to_database(current_bill, force_push=False):
     logger.info("Push current utility bill value to database")
     last_entry = fetch_last_entry()
 
-    if ((last_entry["month"] != current_bill["month"] and last_entry["year"] != current_bill["year"]) or force_push):
+    if ((last_entry["month"] != current_bill["month"]) or force_push):
         collection_table.insert_one(current_bill)
     else:
         logger.info(
@@ -64,6 +78,8 @@ def get_all_entries():
 
 def main(driver):
     logger.info("Begin data extraction pipeline")
+    args = parse_args()
+    update_cookies(args, driver)
     current_bill = generate_bill_entry()
     get_utility_bills(current_bill, driver)
     print(current_bill)

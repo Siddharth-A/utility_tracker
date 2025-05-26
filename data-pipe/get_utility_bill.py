@@ -24,7 +24,7 @@ def read_element_safely(driver, by, value, default):
 def hydro(driver, details):
     hydro_bill = 0
     driver.get(details['url'])
-    time.sleep(2)
+    time.sleep(5)
 
     # login
     user = driver.find_element(By.NAME, "username")
@@ -72,7 +72,7 @@ def hydro(driver, details):
 def alectra(driver, details):
     alectra_bill = 0
     driver.get(details['url'])
-    time.sleep(2)
+    time.sleep(5)
 
     # login
     user = driver.find_element(By.NAME, "username")
@@ -114,7 +114,7 @@ def alectra(driver, details):
 def enbridge(driver, details):
     enbridge_bill = 0
     driver.get(details['url'])
-    time.sleep(2)
+    time.sleep(5)
 
     # login
     user = driver.find_element(By.NAME, "username")
@@ -167,7 +167,7 @@ def enbridge(driver, details):
 def reliance(driver, details):
     reliance_bill = 0
     driver.get(details['url'])
-    time.sleep(2)
+    time.sleep(5)
 
     # login
     user = driver.find_element(By.ID, "main_UID")
