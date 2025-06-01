@@ -2,13 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
+import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import { Grid2, Typography } from "@mui/material";
-import WaterDropIcon from "@mui/icons-material/WaterDrop";
-import PropaneTankIcon from "@mui/icons-material/PropaneTank";
-import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
-import { fakeData } from "./data";
+import { fetchUtilityData, fakeData } from "./data";
 
 const IndPaper = styled(Paper)(({ theme }) => ({
   width: 1000,
@@ -27,13 +25,23 @@ const IndPaper = styled(Paper)(({ theme }) => ({
 
 // {{ top: 30, bottom: 60, left:15, right:15 }}
 export default function Annualpaperview() {
+  const [utilityData, setUtilityData] = useState([]);
   const currentYear = new Date().getFullYear();
   const lastYear = currentYear - 1;
   
   const dataKey = ["Alectra", "Bhydro", "Enbridge", "Reliance"];
 
+  // Load data from API
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await fetchUtilityData();
+      setUtilityData(data);
+    }
+    loadData();
+  }, []);
+
   const calculateYearlyTotal = (year) => {
-    return fakeData
+    return utilityData
       .filter((entry) => entry.year === year)
       .reduce((total, entry) => {
         return total + dataKey.reduce((sum, key) => sum + (entry[key] || 0), 0);

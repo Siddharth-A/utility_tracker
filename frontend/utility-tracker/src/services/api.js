@@ -1,37 +1,38 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3002/api';
+// API Configuration
+const API_BASE_URL = 'http://localhost:3002/api';
 
-/**
- * Fetches all utility bills from the API
- * @returns {Promise<Array>} Array of bill objects
- * @throws {Error} If the API request fails
- */
-export const fetchBills = async () => {
-    try {
-        const response = await fetch(`${API_BASE_URL}/bills`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch bills');
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching bills:', error);
-        throw error;
-    }
+const API_ENDPOINTS = {
+    BILLS: `${API_BASE_URL}/bills`,
+    CURRENT_BILLS: `${API_BASE_URL}/bills/current`,
 };
 
-/**
- * Fetches the current month's utility bills from the API
- * @returns {Promise<Object>} Current month's bill data
- * @throws {Error} If the API request fails
- */
-export const fetchCurrentBills = async () => {
-    try {
-        const response = await fetch(`${API_BASE_URL}/bills/current`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch current bills');
+// API Service
+class ApiService {
+    async getAllBills() {
+        try {
+            const response = await fetch(API_ENDPOINTS.BILLS);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching all bills:', error);
+            throw error;
         }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching current bills:', error);
-        throw error;
     }
-}; 
+
+    async getCurrentBills() {
+        try {
+            const response = await fetch(API_ENDPOINTS.CURRENT_BILLS);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching current bills:', error);
+            throw error;
+        }
+    }
+}
+
+export const apiService = new ApiService(); 

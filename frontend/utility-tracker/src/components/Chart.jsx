@@ -1,16 +1,27 @@
 // Chart.jsx
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { Button, ButtonGroup, Box, Select, MenuItem, InputLabel, FormControl, Checkbox, ListItemText } from "@mui/material";
 
-import { addLabels, fakeData } from "./data";
+import { fetchUtilityData, fakeData } from "./data";
 
 export default function Chart() {
+  const [utilityData, setUtilityData] = useState([]);
   const currentYear = new Date().getFullYear();
   const lastYear = currentYear - 1;
 
   const dataKeys = ["Alectra", "Bhydro", "Enbridge", "Reliance"];
   const allMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  // Load data from API
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await fetchUtilityData();
+      setUtilityData(data);
+    }
+    loadData();
+  }, []);
 
   // Initialize data structure with all months
   const processedData = allMonths.map((month) => ({
@@ -20,7 +31,7 @@ export default function Chart() {
   }));
 
   // Populate the dataset with available data
-  fakeData.forEach((item) => {
+  utilityData.forEach((item) => {
     const { month, year } = item;
     const total = dataKeys.reduce((sum, key) => sum + (item[key] || 0), 0);
 
